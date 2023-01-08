@@ -42,11 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static $rules = (object) [
+    public array $rules =  [
 
         'register' => [
             'name' => 'required',
-            'email' => 'required|unique',
+            'email' => 'required|unique:users',
             'password' => 'required'
         ],
 
