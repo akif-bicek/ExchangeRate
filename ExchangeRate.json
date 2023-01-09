@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "e0f0c3b4-30f5-4467-bf21-edb3d13d1f0a",
+		"name": "Exchange Rate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24589998"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}register",
+							"host": [
+								"{{host}}register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Sanctum",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"akifbicek@gmail.com\",\n    \"password\": \"akif123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}login",
+							"host": [
+								"{{host}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "c702eabd98794e68a32d529c05d6f5e101ce534e4a24d99865877945016a0227",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}logout",
+							"host": [
+								"{{host}}logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Passport",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"client_id\": 2,\n    \"client_secret\": \"0zU4HBgqfLkaDKBUkqCSGWinnXzQApwpLMF3GFjR\",\n    \"grant_type\": \"password\",\n    \"username\": \"akifbicek@gmail.com\",\n    \"password\": \"akif123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/oauth/token",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exchange Rate",
+			"item": [
+				{
+					"name": "Exchange Rates",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}exchange-rate",
+							"host": [
+								"{{host}}exchange-rate"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiNGI4ZTU5ZDVlZDFkY2E3NzM2MTI5NjU4NDYwODE5MWRkN2JkYzI4Y2MwNTUzOThjMjM3OGQ3YTBjNTFhMzBhMzYyOGM5ZGI1MjczZjE1NjUiLCJpYXQiOjE2NzMyNTQyODIuNzg4NzQ1LCJuYmYiOjE2NzMyNTQyODIuNzg4NzQ4LCJleHAiOjE3MDQ3OTAyODIuNzY4OTQsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.hjjNXWLQi3BEO8O2u0-VEE8TPD8yjLFSkFZl37OLwtNN1-f7DSB1RCSiKTvM-qMyH2d22iQpR3GiY004z91XjP8pREy1618RF4yM1ZmTnY4Uto2lWZ1SnOZu2wSoB4jPo7cTrwiOU-ZVPZ6qreqy5CqzYclE1sEiCBykLR9kOJPd6ZAfT0iEWTd6gJ-WPlloqXr5xO7LjyMKWKKYxgmz5g-UCyIJwgDZxma0q1gb7Se3IaCqNpalfh3wLz4VVdkuRQToPCOUWZsm8oyuEUuFfNMbt4VSQ__zyjJAEMs68ck0vxK9ge_rkoWcSgyMXPe0z7z9rW5zGADjdAMRkkafzutqhMsuPCDeGVGG8QTv11kKS2fRbYg_AQrb4i0WQz-G0zU-FedcOD4zPxW0YaOlT172-Vh-6uoZBjBcywMQib2RVf4UtqmiVEL8dq1TOs-fjFx2jKPYWDSo6FiRTH40be6MpzW7TeLsu7gtKpKBWnKqS3oU6S26kn_dENViuoibQ1qg5ZtZ-x11ngRIJLmajujAD788RgW4JxaXYwviZYtjkER-zHlSPx0Dr5sWP1Affggf3R8rtbmdU7ljV-xe99F_1FU6xcba88J6-_a_k_dl66Tojpjftyzejyljxs-GeC-FaExrRBUDrqgzrLhVT8QiS0323SOuq73LC6s1Ajw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://127.0.0.1:8000/api/",
+			"type": "string"
+		}
+	]
+}
