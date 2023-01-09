@@ -18,6 +18,7 @@ class Response
     const UNAUTH = 401;
     const FORBIDDEN = 403; // The user is authenticated, but does not have the permissions to perform an action.
     const NOTFOUND = 404;
+    const UNPROCESSABLEENTITIY = 422;
     const SERVERERROR = 500; // If something unexpected breaks, this is what your user is going to receive.
     const UNAVAILABLE = 503;
 
