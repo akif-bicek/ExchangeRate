@@ -1,4 +1,9 @@
 <?php
+namespace App\Libraries;
+
+use Carbon\Carbon;
+use PhpParser\JsonDecoder;
+
 class ExchangeRate {
     private $api = 'https://api.apilayer.com/exchangerates_data/convert';
     private $key = 'Sa3X4jekJqNM5j3ldbcOWXG5Jvm9ROUM';
@@ -13,9 +18,10 @@ class ExchangeRate {
         {
             $this->setParams($exchangeRate->TargetCurrency, $exchangeRate->SourceCurrency);
             $this->curl();
-            if ($this->_response['success'])
+            if ($this->_response->success)
             {
-                $exchangeRate->value = $this->_response['result'];
+                $exchangeRate->Value = (double)$this->_response->result;
+                $exchangeRate->TradingDate = Carbon::now();
                 $exchangeRate->save();
             }
         }
@@ -43,7 +49,7 @@ class ExchangeRate {
         $response = curl_exec($curl);
 
         curl_close($curl);
-        $this->_response = $response;
+        $this->_response = json_decode($response);
     }
 
     private function setParams($target, $source)

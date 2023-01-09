@@ -3,7 +3,7 @@
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\ExchangeRateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +21,6 @@ Route::post('/register', [UserController::class, 'create']);
 Route::post('/login', [LoginController::class, 'index']);
 Route::post('/logout', [LogoutController::class, 'index']);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    Route::get('/exchange-rate', [ExchangeRateController::class, 'index']);
 });
